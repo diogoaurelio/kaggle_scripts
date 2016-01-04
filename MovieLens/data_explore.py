@@ -1,7 +1,9 @@
 
 import os
 from spark_env import spark_env as env
-import matplotlib as plt
+
+import numpy as np
+import matplotlib.pyplot as plt
 
 from pyspark import SparkConf, SparkContext
 
@@ -49,7 +51,7 @@ def explore_user_data(user_data):
 def _user_ages(user_fields):
     ages = user_fields.map(lambda x: int(x[1])).collect()
     plt.hist(ages, bins=20, color='loghtblue', normed=True)
-    fig = plt.pyplot.gcf()
+    fig = plt.gcf()
     fig.set_size_inches(16,10)
 
 def main():
